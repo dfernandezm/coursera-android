@@ -10,10 +10,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.drawable.ScaleDrawable;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
@@ -141,7 +139,7 @@ public class BubbleActivity extends Activity {
 				for (int i = 0; i < mFrame.getChildCount(); i++) {
 					BubbleView bubbleView = (BubbleView) mFrame.getChildAt(i);
 					
-					if (bubbleView.intersects(event1.getX(), event2.getY())) {
+					if (bubbleView.intersects(event1.getX(), event1.getY())) {
 						bubbleView.deflect(velocityX, velocityY);
 					}
 				}
@@ -263,7 +261,6 @@ public class BubbleActivity extends Activity {
 				
 				// - set rotation in range [1..3]
 				mDRotate = 1 + r.nextInt(3);
-				log ("rotation: mDRotate: " + mDRotate);
 				
 			} else {
 			
@@ -298,7 +295,7 @@ public class BubbleActivity extends Activity {
 				// direction to [-3..3].
 				mDx = -3 + r.nextInt(6);
 				mDy = -3 + r.nextInt(6);
-				log ("Direction and speed: mDx: " + mDx + ", mDy: " + mDy);
+				
 			
 			}
 		}
