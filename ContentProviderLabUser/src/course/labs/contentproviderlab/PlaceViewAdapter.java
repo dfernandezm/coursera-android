@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -153,7 +152,7 @@ public class PlaceViewAdapter extends CursorAdapter {
 
 			ContentValues values = new ContentValues();
 			
-			values.put(PlaceBadgesContract._ID, UUID.randomUUID().toString());
+			values.put(PlaceBadgesContract._ID, System.currentTimeMillis()-10000);
 			values.put(PlaceBadgesContract.PLACE_NAME, listItem.getPlace());
 			values.put(PlaceBadgesContract.COUNTRY_NAME, listItem.getCountryName());
 			values.put(PlaceBadgesContract.FLAG_BITMAP_PATH, listItem.getFlagBitmapPath());

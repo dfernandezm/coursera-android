@@ -47,8 +47,12 @@ public class PlaceViewActivity extends ListActivity implements
 	// A fake location provider used for testing
 	private MockLocationProvider mMockLocationProvider;
 	
-	private static final String[] BADGES_ROWS = new String[] { PlaceBadgesContract._ID,
-		PlaceBadgesContract.COUNTRY_NAME, PlaceBadgesContract.FLAG_BITMAP_PATH, PlaceBadgesContract.LAT,
+	private static final String[] BADGES_ROWS = new String[] { 
+		PlaceBadgesContract._ID,
+		PlaceBadgesContract.PLACE_NAME,
+		PlaceBadgesContract.COUNTRY_NAME, 
+		PlaceBadgesContract.FLAG_BITMAP_PATH, 
+		PlaceBadgesContract.LAT,
 		PlaceBadgesContract.LON };
 
 	@Override
@@ -107,6 +111,8 @@ public class PlaceViewActivity extends ListActivity implements
 
 		mMockLocationProvider = new MockLocationProvider(
 				LocationManager.NETWORK_PROVIDER, this);
+		
+		getLoaderManager().initLoader(0, null, this);
 
 		// - Check NETWORK_PROVIDER for an existing location reading.
 		// Only keep this last reading if it is fresh - less than 5 minutes old.
