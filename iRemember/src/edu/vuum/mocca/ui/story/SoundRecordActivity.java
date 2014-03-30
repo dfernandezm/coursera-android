@@ -228,6 +228,7 @@ public class SoundRecordActivity extends Activity {
         }
 
         if (mPlayer != null) {
+            mPlayer.reset();
             mPlayer.release();
             mPlayer = null;
         }

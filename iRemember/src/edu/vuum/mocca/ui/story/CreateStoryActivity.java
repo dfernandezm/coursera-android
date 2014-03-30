@@ -253,21 +253,19 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// - Use getOutputMediaFile() to create a new 
 		// filename for this specific sound file
 		
-		//TODO: for grading, in the emulator
-//		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-//			
-//		}
-		
-		File soundFile = getOutputMediaFile(MEDIA_TYPE_AUDIO);
-		
-		// - Add the filename to the Intent as an extra. Use the Intent-extra name
-		// from the SoundRecordActivity class, EXTRA_OUTPUT
-		soundIntent.putExtra(SoundRecordActivity.EXTRA_OUTPUT, soundFile.getAbsolutePath());
-		
-		// - Start a new activity for result, using the new intent and the request
-		// code MIC_SOUND_REQUEST
-		startActivityForResult(soundIntent, MIC_SOUND_REQUEST);
-		
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+			File soundFile = getOutputMediaFile(MEDIA_TYPE_AUDIO);
+			
+			// - Add the filename to the Intent as an extra. Use the Intent-extra name
+			// from the SoundRecordActivity class, EXTRA_OUTPUT
+			soundIntent.putExtra(SoundRecordActivity.EXTRA_OUTPUT, soundFile.getAbsolutePath());
+			
+			// - Start a new activity for result, using the new intent and the request
+			// code MIC_SOUND_REQUEST
+			startActivityForResult(soundIntent, MIC_SOUND_REQUEST);
+		} else {
+			Toast.makeText(this, "Media not mounted or not writable", Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	// This function creates a new Intent to launch the built-in Camera activity
